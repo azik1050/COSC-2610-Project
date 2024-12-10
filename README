@@ -44,3 +44,19 @@ views.py -  contains all code that is responsible for how our web pages are disp
 urls.py - manages routes and functions from views.py that must be displayed for each path (url, like http://111.11.11/courses)
 
 settings.py - all settings of project
+
+
+4. DB
+docker exec -it AZIMJON-DB bash
+
+psql -U azimjon -d azimjon-db
+
+\dt
+
+INSERT INTO courses_timetable (course_id, day, time, room, student_level)
+VALUES 
+(1, 'Monday', '9.00 - 11.20', 'Room A101', '1'),
+(1, 'Tuesday', '11.30 - 13.50', 'Room B202', '2'),
+(1, 'Wednesday', '14.00 - 16.20', 'Room C303', '3'),
+(1, 'Wednesday', '14.00 - 16.20', 'Room D404', '4'),
+(1, 'Wednesday', '14.00 - 16.20', 'Room E505', '1');
