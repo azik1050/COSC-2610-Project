@@ -1,0 +1,46 @@
+Project to create simple webpage to check timetable use resources from docker
+
+Guides
+
+1. Install PostgreSQL in Docker, configure project and run them toghether
+
+docker run -d --name AZIMJON-DB -e POSTGRES_USER=azimjon -e POSTGRES_PASSWORD=1234 -e POSTGRES_DB=azimjon-db -p 5433:5432 postgres: // install pg db on docker
+
+docker build -t webster-student-schedule . // build docker container from local project
+
+docker start AZIMJON-DB // run the db
+
+docker run -d --name webster-student-schedule -e DATABASE_NAME=azimjon-db -e DATABASE_USER=azimjon -e DATABASE_PASSWORD=1234 -e DATABASE_HOST=host.docker.internal -e DATABASE_PORT=5432 -p 8000:8000 webster-student-schedule // run the db with the given port
+
+docker exec -it webster-student-schedule python manage.py migrate // apply schemas from models.py to our database, so code is turned into SQL "CREATE TABLE" commands
+
+docker run -d --name webster-student-schedule -p 8001:8001 webster-student-schedule // run the docker on our port
+
+docker exec -it webster-student-schedule python manage.py runserver 0.0.0.0:8001 // run the project from docker container
+
+docker exec -it webster-student-schedule python manage.py createsuperuser // create a user with admin rights at the database, he is able to visit admin page
+
+http://localhost:8001/ // address of a website
+
+2. Django commands
+python manage.py makemigrations - will create SQL commands for table creation
+
+python manage.py migrate - will execute the created SQL commands to db
+
+python manage.py startapp courses - will create an app inside django project 
+
+python manage.py runserver - will run the project locally 
+
+python manage.py createsuperuser - will create a superuser with ability to visit admin panel
+
+
+3. Important files
+models.py - contains all code that is responsible for creation of SQL tables
+
+admin.py - contains all code that is responsible for configuration of admin panel
+
+views.py -  contains all code that is responsible for how our web pages are displayed
+
+urls.py - manages routes and functions from views.py that must be displayed for each path (url, like http://111.11.11/courses)
+
+settings.py - all settings of project
