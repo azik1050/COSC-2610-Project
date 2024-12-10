@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Courses
+{% endblock %}
+
+
+{% block content %}
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Course name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Slug
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Last update date
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% include 'courses/components/courses.html' %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

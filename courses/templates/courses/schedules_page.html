@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Schedules
+{% endblock %}
+
+
+{% block content %}
+
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+            <div>
+                <form method="get" style="margin-top: 20px;">
+                    {% csrf_token %}
+                    <input name="level"
+                           id="level"
+                           style="width: 200px;" type="number" max="4" min="1" id="email"
+                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                           placeholder="Level (e.g. 1)" required/>
+                    <button style="margin-top: 10px;" id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio"
+                            class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                            type="submit">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+            <tr>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Course
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Room
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Level
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Day
+                </th>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Time
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% include 'courses/components/schedules.html' %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

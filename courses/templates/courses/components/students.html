@@ -1,0 +1,25 @@
+{% if students %}
+    {% for student in students %}
+        <tr class="border-b border-gray-200 dark:border-gray-700">
+            <th scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                {{ student.firstname }}
+            </th>
+            <td class="px-6 py-4">
+                {{ student.middlename }}
+            </td>
+            <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                {{ student.lastname }}
+            </td>
+            <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                {{ student.seniority }}
+            </td>
+            <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                {{ student.start_date }}
+            </td>
+            <td class="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+                {{ student.gender }}
+            </td>
+        </tr>
+    {% endfor %}
+{% endif %}
